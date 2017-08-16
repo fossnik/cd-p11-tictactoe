@@ -13,12 +13,9 @@ var exigents =	[
 var emptyBoxes = [1,2,3,4,5,6,7,8,9];
 
 function testFlip(box) {
-	emptyBoxes.splice(2,2);
 	var randomBox = emptyBoxes[Math.floor(Math.random()*emptyBoxes.length)];
 	// remove chosen box from emptyBoxes
-	var rmIndex = emptyBoxes.indexOf[randomBox];
-	emptyBoxes.splice(rmIndex,rmIndex);
-	console.log(emptyBoxes);
+	emptyBoxes.splice(emptyBoxes.indexOf(randomBox),1);
 }
 
 
