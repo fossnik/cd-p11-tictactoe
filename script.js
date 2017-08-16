@@ -32,6 +32,8 @@ function machineFlip() {
 		emptyBoxes.splice(emptyBoxes.indexOf(randomBox),1);
 		document.getElementById(randomBox).innerHTML = computer;
 		document.getElementById(randomBox).style.backgroundColor = '#8080ff';
+	} else {
+		gameOver("No");
 	}
 	testGame(computer);
 }
@@ -47,10 +49,14 @@ function testGame(player) {
 			}
 		});
 		if (success) {
-			var winHTML = player + " WINS!";
-			winHTML += "<br><div><button class='btn btn-success'";
-			winHTML += "onclick='window.location.reload()'>New Game</button></div>";
-			document.getElementById("tictactoe").innerHTML = winHTML;
+			gameOver(player);
 		}
 	});
+}
+
+function gameOver(player) {
+	var winHTML = player + " WINS!";
+	winHTML += "<br><div><button class='btn btn-success'";
+	winHTML += "onclick='window.location.reload()'>New Game</button></div>";
+	document.getElementById("tictactoe").innerHTML = winHTML;
 }
