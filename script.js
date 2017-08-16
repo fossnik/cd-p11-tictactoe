@@ -12,6 +12,13 @@ var exigents =	[
 								];
 var emptyBoxes = [1,2,3,4,5,6,7,8,9];
 
+// 50% chance that machine starts
+window.onload = function() {
+	if (Math.floor(Math.random()*2) === 1) {
+		machineFlip();
+	}
+};
+
 function tap(box) {
 	manFlip(box);
 }
