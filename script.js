@@ -18,10 +18,10 @@ function tap(box) {
 
 function manFlip(box) {
 	if (document.getElementById(box).innerHTML === "") {
-		// remove chosen box from emptyBoxes
 		emptyBoxes.splice(emptyBoxes.indexOf(box),1);
 		document.getElementById(box).innerHTML = human;
 		document.getElementById(box).style.backgroundColor = '#ff8080';
+		testGame(human);
 		machineFlip();
 	}
 }
@@ -32,21 +32,22 @@ function machineFlip() {
 		emptyBoxes.splice(emptyBoxes.indexOf(randomBox),1);
 		document.getElementById(randomBox).innerHTML = computer;
 		document.getElementById(randomBox).style.backgroundColor = '#8080ff';
-		// testGame();
 	}
+	testGame(computer);
 }
 
-function testGame() {
-	var winner = human; // "X"
-	var success = true;
+function testGame(player) {
 	// loops through array containing 8 arrays of 3-box win combos
-	exigents.forEach(function(threeBoxes) {
+	exigents.forEach(function(consecutiveBoxes) {
 		// for each inner array loops through 3 boxes to test if they agree
-		threeBoxes.forEach(function(box) {
-			if (document.getElementById(box).innerHTML !== winner) {
+		var success = true;
+		consecutiveBoxes.forEach(function(box) {
+			if (document.getElementById(box).innerHTML !== player) {
 				success = false;
 			}
 		});
+		if (success) {
+			document.getElementById("tictactoe").innerHTML = player + " WINS!"
+		}
 	});
-	console.log(success);
 }
