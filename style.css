@@ -3,9 +3,6 @@ td .btn {
 	height: 96px;
 	font-size: 3em;
 }
-.panel {
-	width: 340px;
-}
 .flex-container {
 	display: flex;
 	align-items: center;

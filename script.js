@@ -47,7 +47,10 @@ function testGame(player) {
 			}
 		});
 		if (success) {
-			document.getElementById("tictactoe").innerHTML = player + " WINS!"
+			var winHTML = player + " WINS!";
+			winHTML += "<br><div><button class='btn btn-success'";
+			winHTML += "onclick='window.location.reload()'>New Game</button></div>";
+			document.getElementById("tictactoe").innerHTML = winHTML;
 		}
 	});
 }
