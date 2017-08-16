@@ -6,3 +6,10 @@ td .btn {
 .panel {
 	width: 340px;
 }
+.flex-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	margin: auto;
+}

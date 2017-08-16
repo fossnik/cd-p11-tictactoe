@@ -7,27 +7,23 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 
-<body>
-	<div class="jumbotron container">
+<body class="jumbotron">
+	<div class="flex-container">
 		<div class="panel panel-primary">
-			<div class="panel-heading text-center">
-				<h1>Tic Tac Toe!</h1>
-			</div>
+			<div class="panel-heading text-center"><h1>Tic Tac Toe!</h1></div>
 			<table class="table table-bordered">
 				<tr>
-					<td><button id="1" type="button" class="btn" onclick="flipBox(1)"></button></td>
-					<td><button id="2" type="button" class="btn" onclick="flipBox(2)"></button></td>
-					<td><button id="3" type="button" class="btn" onclick="flipBox(3)"></button></td>
-				</tr>
-				<tr>
-					<td><button id="4" type="button" class="btn" onclick="flipBox(4)"></button></td>
-					<td><button id="5" type="button" class="btn" onclick="flipBox(5)"></button></td>
-					<td><button id="6" type="button" class="btn" onclick="flipBox(6)"></button></td>
-				</tr>
-				<tr>
-					<td><button id="7" type="button" class="btn" onclick="flipBox(7)"></button></td>
-					<td><button id="8" type="button" class="btn" onclick="flipBox(8)"></button></td>
-					<td><button id="9" type="button" class="btn" onclick="flipBox(9)"></button></td>
+					<td><button id="1" type="button" class="btn" onclick="tap(1)"></button></td>
+					<td><button id="2" type="button" class="btn" onclick="tap(2)"></button></td>
+					<td><button id="3" type="button" class="btn" onclick="tap(3)"></button></td>
+				</tr><tr>
+					<td><button id="4" type="button" class="btn" onclick="tap(4)"></button></td>
+					<td><button id="5" type="button" class="btn" onclick="tap(5)"></button></td>
+					<td><button id="6" type="button" class="btn" onclick="tap(6)"></button></td>
+				</tr><tr>
+					<td><button id="7" type="button" class="btn" onclick="tap(7)"></button></td>
+					<td><button id="8" type="button" class="btn" onclick="tap(8)"></button></td>
+					<td><button id="9" type="button" class="btn" onclick="tap(9)"></button></td>
 				</tr>
 			</table>
 		</div>
@@ -36,7 +32,6 @@
 
 <footer>
 	<script src="script.js"></script>
-	<!-- <hr style="width: 70%">
-	<div style="font-family: monospace; text-align: center"><a href="http://intracitygeeks.org/">CareerDevs</a> of Providence, RI</div> -->
+	<!-- <div style="font-family: monospace; text-align: center"><a href="http://intracitygeeks.org/">CareerDevs</a> of Providence, RI</div> -->
 </footer>
 </html>
