@@ -12,20 +12,14 @@ var exigents =	[
 								];
 var emptyBoxes = [1,2,3,4,5,6,7,8,9];
 
-function testFlip(box) {
-	var randomBox = emptyBoxes[Math.floor(Math.random()*emptyBoxes.length)];
-	// remove chosen box from emptyBoxes
-	emptyBoxes.splice(emptyBoxes.indexOf(randomBox),1);
-}
-
-
 function tap(box) {
-	testFlip(box);
-	// manFlip(box);
+	manFlip(box);
 }
 
 function manFlip(box) {
-	if (document.getElementById(box).innerHTML.length === 0) {
+	if (document.getElementById(box).innerHTML === "") {
+		// remove chosen box from emptyBoxes
+		emptyBoxes.splice(emptyBoxes.indexOf(box),1);
 		document.getElementById(box).innerHTML = human;
 		document.getElementById(box).style.backgroundColor = '#ff8080';
 		machineFlip();
@@ -33,13 +27,12 @@ function manFlip(box) {
 }
 
 function machineFlip() {
-	testGame();
-	var box = Math.floor((Math.random() * 9) + 1);
-	if (document.getElementById(box).innerHTML === "") {
-		document.getElementById(box).innerHTML = computer;
-		document.getElementById(box).style.backgroundColor = '#8080ff';
-	} else {
-		machineFlip();
+	if (emptyBoxes.length > 0) {
+		var randomBox = emptyBoxes[Math.floor(Math.random()*emptyBoxes.length)];
+		emptyBoxes.splice(emptyBoxes.indexOf(randomBox),1);
+		document.getElementById(randomBox).innerHTML = computer;
+		document.getElementById(randomBox).style.backgroundColor = '#8080ff';
+		// testGame();
 	}
 }
 
