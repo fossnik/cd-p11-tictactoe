@@ -19,51 +19,60 @@ window.onload = function() {
 	}
 };
 
-function tap(box) {
-	manFlip(box);
-}
+var functions = {
+	function tap(box) {
+		manFlip(box);
+		if (testGame(human) === true) {
+			gameOver(human);
+		} else if (emptyBoxes.length > 0) {
+			machineFlip(); // machine make move if spaces left
+		} else {
+			gameOver("No"); // stalemate
+		}
 
-function manFlip(box) {
-	if (document.getElementById(box).innerHTML === "") {
-		emptyBoxes.splice(emptyBoxes.indexOf(box),1);
-		document.getElementById(box).innerHTML = human;
-		document.getElementById(box).style.backgroundColor = '#ff8080';
-		testGame(human);
-		machineFlip();
-	}
-}
-
-function machineFlip() {
-	if (emptyBoxes.length > 0) {
+		if (testGame(computer) === true) {
+			gameOver(computer);
+		}
+	},
+	function manFlip(box) {
+		if (document.getElementById(box).innerHTML === "") {
+			emptyBoxes.splice(emptyBoxes.indexOf(box),1);
+			document.getElementById(box).innerHTML = human;
+			document.getElementById(box).style.backgroundColor = '#ff8080';
+		}
+	},
+	function machineFlip() {
 		var randomBox = emptyBoxes[Math.floor(Math.random()*emptyBoxes.length)];
 		emptyBoxes.splice(emptyBoxes.indexOf(randomBox),1);
 		document.getElementById(randomBox).innerHTML = computer;
 		document.getElementById(randomBox).style.backgroundColor = '#8080ff';
-	} else {
-		gameOver("No");
-	}
-	testGame(computer);
-}
-
-function testGame(player) {
-	// loops through array containing 8 arrays of 3-box win combos
-	exigents.forEach(function(consecutiveBoxes) {
-		// for each inner array loops through 3 boxes to test if they agree
-		var success = true;
-		consecutiveBoxes.forEach(function(box) {
-			if (document.getElementById(box).innerHTML !== player) {
-				success = false;
-			}
+	},
+	function testGame(player) {
+		// debugger;
+		// loops through array containing 8 arrays of 3-box win combos
+		exigents.forEach(function(consecutiveBoxes) {
+			var success = true;
+			// for each inner array loops through 3 boxes to test if they agree
+			consecutiveBoxes.forEach(function(box) {
+				if (document.getElementById(box).innerHTML !== player) {
+					success = false;
+				}
+			});
+			if (success === true) { console.log("TRUE") }
 		});
-		if (success) {
-			gameOver(player);
-		}
-	});
-}
+		console.log("FALSE")
+		return false;
+	},
+	function gameOver(player) {
+		var winHTML = player + " WINS!";
+		winHTML += "<br><div><button class='btn btn-success'";
+		winHTML += "onclick='window.location.reload()'>New Game</button></div>";
+		document.getElementById("tictactoe").innerHTML = winHTML;
+	}
+};
 
-function gameOver(player) {
-	var winHTML = player + " WINS!";
-	winHTML += "<br><div><button class='btn btn-success'";
-	winHTML += "onclick='window.location.reload()'>New Game</button></div>";
-	document.getElementById("tictactoe").innerHTML = winHTML;
-}
+var handlers = {
+	function tap(box) {
+		functions.tap(box);
+	},
+};
