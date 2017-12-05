@@ -1,22 +1,21 @@
 var human = "X";
 var computer = "O";
 var exigents =	[
-								[1, 2, 3],
-								[4, 5, 6],
-								[7, 8, 9],
-								[1, 4, 7],
-								[2, 5, 8],
-								[3, 6, 9],
-								[1, 5, 9],
-								[7, 5, 3]
-								];
+		[1, 2, 3],
+		[4, 5, 6],
+		[7, 8, 9],
+		[1, 4, 7],
+		[2, 5, 8],
+		[3, 6, 9],
+		[1, 5, 9],
+		[7, 5, 3]
+		];
 var emptyBoxes = [1,2,3,4,5,6,7,8,9];
 
 // 50% chance that machine starts
 window.onload = function() {
-	if (Math.floor(Math.random()*2) === 1) {
+	if (Math.floor(Math.random()*2) === 1)
 		machineFlip();
-	}
 };
 
 function tap(box) {
@@ -42,6 +41,7 @@ function machineFlip() {
 	} else {
 		gameOver("No");
 	}
+	
 	testGame(computer);
 }
 
@@ -51,13 +51,11 @@ function testGame(player) {
 		// for each inner array loops through 3 boxes to test if they agree
 		var success = true;
 		consecutiveBoxes.forEach(function(box) {
-			if (document.getElementById(box).innerHTML !== player) {
-				success = false;
-			}
+			if (document.getElementById(box).innerHTML !== player)
+				success = false;			}
 		});
-		if (success) {
+		if (success)
 			gameOver(player);
-		}
 	});
 }
 
