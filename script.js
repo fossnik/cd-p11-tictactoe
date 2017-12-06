@@ -2,14 +2,17 @@ var human = "X";
 var computer = "O";
 
 // all the winning combinations of tiles
-var exigents =	[[1, 2, 3],
-		[4, 5, 6],
-		[7, 8, 9],
-		[1, 4, 7],
-		[2, 5, 8],
-		[3, 6, 9],
-		[1, 5, 9],
-		[7, 5, 3]];
+var exigents = [
+[1, 2, 3],
+[4, 5, 6],
+[7, 8, 9],
+[1, 4, 7],
+[2, 5, 8],
+[3, 6, 9],
+[1, 5, 9],
+[7, 5, 3]];
+
+// a record of which boxes are presently empty
 var emptyBoxes = [1,2,3,4,5,6,7,8,9];
 
 // 50% chance that machine starts
@@ -18,16 +21,22 @@ window.onload = function() {
 		machineFlip();
 };
 
+// triggered by click event on a box
 function tap(box) {
 	manFlip(box);
 }
 
 function manFlip(box) {
 	if (document.getElementById(box).innerHTML === "") {
+		// if an empty box, delist it and insert content
 		emptyBoxes.splice(emptyBoxes.indexOf(box),1);
 		document.getElementById(box).innerHTML = human;
 		document.getElementById(box).style.backgroundColor = '#ff8080';
+		
+		// test if game has reached a conclusion
 		testGame(human);
+		
+		// allow the machine to take its turn.
 		machineFlip();
 	}
 }
